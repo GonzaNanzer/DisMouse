@@ -181,32 +181,32 @@ class DisMouse (tk.Frame):
 
         # **-------------Botones Set---------------**
 
-        botonSetRojo = tk.Button(self.ventana, text='Set Rojo', bg='Grey', fg='black', font=18
+        botonSetRojo = tk.Button(self.ventana, text='Set Rojo', bg='Red', fg='black', font=18
                              ,command = self.set_config_Rojo)
         botonSetRojo.grid(row=1, column=18, padx=5, pady=5, columnspan=6)
         botonSetRojo.config(width=40)
 
-        botonSetAzul = tk.Button(self.ventana, text='Set Azul', bg='Grey', fg='black', font=18
+        botonSetAzul = tk.Button(self.ventana, text='Set Azul', bg='Blue', fg='black', font=18
                                  , command=self.set_config_Azul)
         botonSetAzul.grid(row=2, column=18, padx=5, pady=5, columnspan=6)
         botonSetAzul.config(width=40)
 
-        botonSetNaranja = tk.Button(self.ventana, text='Set Naranja', bg='Grey', fg='black', font=18
+        botonSetNaranja = tk.Button(self.ventana, text='Set Naranja', bg='Orange', fg='black', font=18
                                  , command=self.set_config_Naranja)
         botonSetNaranja.grid(row=3, column=18, padx=5, pady=5, columnspan=6)
         botonSetNaranja.config(width=40)
 
-        botonSetCeleste = tk.Button(self.ventana, text='Set Celeste', bg='Grey', fg='black', font=18
+        botonSetCeleste = tk.Button(self.ventana, text='Set Celeste', bg='Skyblue', fg='black', font=18
                                  , command=self.set_config_Celeste)
         botonSetCeleste.grid(row=4, column=18, padx=5, pady=5, columnspan=6)
         botonSetCeleste.config(width=40)
 
-        botonSetFuncion = tk.Button(self.ventana, text='Set Funcion', bg='Grey', fg='black', font=18
+        botonSetFuncion = tk.Button(self.ventana, text='Set Funcion', bg='Green', fg='black', font=18
                                     , command=self.set_config_Funcion)
         botonSetFuncion.grid(row=5, column=18, padx=5, pady=5, columnspan=6)
         botonSetFuncion.config(width=40)
 
-        botonSetOrientacion = tk.Button(self.ventana, text='Set Orientacion', bg='Grey', fg='black', font=18
+        botonSetOrientacion = tk.Button(self.ventana, text='Set Orientacion', bg='Yellow', fg='black', font=18
                                     , command=self.set_config_Orientacion)
         botonSetOrientacion.grid(row=6, column=18, padx=5, pady=5, columnspan=6)
         botonSetOrientacion.config(width=40)
