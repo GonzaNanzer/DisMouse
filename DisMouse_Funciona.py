@@ -303,11 +303,6 @@ class DisMouse (tk.Frame):
 
         self.ventana.mainloop()
 
-
-    def actualizar_puertos(self):
-        return self.datos_arduino.puertos_disponibles()
-
-
 if __name__ == "__main__":
 
     app = DisMouse()
