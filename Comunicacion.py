@@ -1,5 +1,4 @@
 import serial, time
-import FuncionBotones
 
 def SeleccionPueto():
     for i in range(10):

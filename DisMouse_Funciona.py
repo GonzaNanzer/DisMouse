@@ -3,15 +3,14 @@ import serial
 import serial.tools.list_ports
 from tkinter import ttk as ttk
 
-
-class Grafica(tk.Frame):
+class DisMouse (tk.Frame):
 
     def __init__(self):
 
         self.arduino = serial.Serial()
         self.PuertoCOM = []
         self.baudrate = ['1200', '2400', '4800', '9600', '19200', '38400', '115200']
-        self.conmunicacion = None
+
 
     def puertos_disponibles(self):
         self.puertos = [port.device for port in serial.tools.list_ports.comports()]
@@ -116,7 +115,7 @@ class Grafica(tk.Frame):
         self.ventana = tk.Tk()
         self.ventana.title('DisMouse')
         self.ventana.resizable(True,True)
-        self.ventana.iconbitmap(r'D:\Python\DataScience\DisMouse-main\DisMouseIco.ico')
+        self.ventana.iconbitmap(r'DisMouseIco.ico')
 
         """
         Creo botones y cuadros de opciones.
@@ -203,12 +202,12 @@ class Grafica(tk.Frame):
         botonSetCeleste.config(width=40)
 
         botonSetFuncion = tk.Button(self.ventana, text='Set Funcion', bg='Grey', fg='black', font=18
-                                    , command=self.set_config_Celeste)
+                                    , command=self.set_config_Funcion)
         botonSetFuncion.grid(row=5, column=18, padx=5, pady=5, columnspan=6)
         botonSetFuncion.config(width=40)
 
         botonSetOrientacion = tk.Button(self.ventana, text='Set Orientacion', bg='Grey', fg='black', font=18
-                                    , command=self.set_config_Celeste)
+                                    , command=self.set_config_Orientacion)
         botonSetOrientacion.grid(row=6, column=18, padx=5, pady=5, columnspan=6)
         botonSetOrientacion.config(width=40)
 
@@ -309,11 +308,7 @@ class Grafica(tk.Frame):
         return self.datos_arduino.puertos_disponibles()
 
 
-
-
-
-
 if __name__ == "__main__":
 
-    app = Grafica()
+    app = DisMouse()
     app.widgets()
