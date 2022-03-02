@@ -70,7 +70,7 @@ class DisMouse (tk.Frame):
         return 
 
     def set_config_Rojo(self):
-        com = str(self.combobox_Rojo.current() + 1)
+        com = str(self.combobox_Azul.current() + 1)
         self.arduino.write(com.encode('ascii'))
         return
 
@@ -97,6 +97,12 @@ class DisMouse (tk.Frame):
     def set_config_Orientacion(self):
         com = str(self.combobox_Orientacion.current() + 1)
         self.arduino.write(com.encode('ascii'))
+        return
+
+    def Set_caracter(self):
+        text = str(self.una_letra.get())
+        self.arduino.write(text.encode('ascii'))
+        print(text)
         return
 
     def ChauDisMouse(self):
@@ -281,15 +287,19 @@ class DisMouse (tk.Frame):
         conectar.grid(row=3, column=12, padx=5, pady=5, columnspan=6)
         conectar.config(width=30)
 
-        # **-------------Dialogo Seria---------------**
+        # **-------------Ingresar comando por teclado---------------**
 
-        dialogo = tk.Text(self.ventana, width = 30,height = 5)
-        dialogo.grid(row=4, column=12, padx=5, pady=5, columnspan=3, rowspan = 3)
+        self.una_letra = tk.Entry(self.ventana)
+        self.una_letra.grid(row=4, column=12, padx=5, pady=5, columnspan=3)
 
-        scrollvert = tk.Scrollbar(self.ventana, command = dialogo.yview)
-        scrollvert.grid(row=4, column=15,sticky = "nsew", )
 
-        dialogo.config(yscrollcommand=scrollvert.set)
+        # **-------------Boton Set Letra---------------**
+
+        set_letra = tk.Button(self.ventana, text='Set Letra', bg='Grey', fg='black', font=18
+                              , command = self.Set_caracter)
+        set_letra.grid(row=5, column=12, padx=5, pady=5, columnspan=3)
+
+
 
         # **-------------Boton Leer Dato---------------**
 
@@ -299,11 +309,11 @@ class DisMouse (tk.Frame):
         botonLD.config(width=30)
 
 
-
-
         self.ventana.mainloop()
 
 if __name__ == "__main__":
 
     app = DisMouse()
     app.widgets()
+
+
