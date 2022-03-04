@@ -67,7 +67,12 @@ class DisMouse (tk.Frame):
     def BotonOrientacion(self):
         com = 'bO'
         self.arduino.write(com.encode('ascii'))
-        return 
+        return
+
+    def BotonVelocidad(self):
+        com = 'bV'
+        self.arduino.write(com.encode('ascii'))
+        return
 
     def set_config_Rojo(self):
         com = str(self.combobox_Azul.current() + 1)
@@ -105,6 +110,16 @@ class DisMouse (tk.Frame):
         print(text)
         return
 
+    def set_Velidad(self):
+        com = self.valorVel.get()
+        str(self.arduino.write(com.encode('ascii')))
+        return
+
+    def leervelocidad(self):
+        com = self.valorVel.get()
+        return print(com)
+
+
     def ChauDisMouse(self):
         com = 'cDm'
         self.arduino.write(com.encode('ascii'))
@@ -121,7 +136,7 @@ class DisMouse (tk.Frame):
         self.ventana = tk.Tk()
         self.ventana.title('DisMouse')
         self.ventana.resizable(True,True)
-        self.ventana.iconbitmap(r'DisMouseIco.ico')
+        #self.ventana.iconbitmap(r'DisMouseIco.ico')
 
         """
         Creo botones y cuadros de opciones.
@@ -178,44 +193,75 @@ class DisMouse (tk.Frame):
         botonOrientacion.grid(row= 6,column=1,padx=5,pady=5, columnspan=3)
         botonOrientacion.config(width = 20)
 
+        # **-------------Boton Velocidad---------------**
+        botonVelocidad = tk.Button(self.ventana, text='Boton Velocidad', bg='brown', fg='black', font=18
+                                   , command = self.BotonVelocidad)
+        botonVelocidad.grid(row=8, column=1, padx=5, pady=5, columnspan=3)
+        botonVelocidad.config(width=20)
+
+        # **-------------Botones Conectar---------------**
+        conectar = tk.Button(self.ventana, text='Conectar', bg='Grey', fg='black', font=18
+                             , command=self.concetar)
+        conectar.grid(row=3, column=12, padx=5, pady=5, columnspan=6)
+        conectar.config(width=30)
+
         #**-------------Salir del modo config---------------**
 
         botonConfig = tk.Button(self.ventana, text='Salir Del Modo Configuracion', bg='Grey', fg='black', font=18
                                 ,command = self.ChauDisMouse)
-        botonConfig.grid(row=7, column=3, padx=5, pady=5, columnspan=6)
+        botonConfig.grid(row=9, column=3, padx=5, pady=5, columnspan=6)
         botonConfig.config(width=40)
+
 
         # **-------------Botones Set---------------**
 
+        # **-------------Botones Set Rojo---------------**
         botonSetRojo = tk.Button(self.ventana, text='Set Rojo', bg='Red', fg='black', font=18
                              ,command = self.set_config_Rojo)
         botonSetRojo.grid(row=1, column=18, padx=5, pady=5, columnspan=6)
         botonSetRojo.config(width=40)
+
+        # **-------------Botones Set Azul---------------**
 
         botonSetAzul = tk.Button(self.ventana, text='Set Azul', bg='Blue', fg='black', font=18
                                  , command=self.set_config_Azul)
         botonSetAzul.grid(row=2, column=18, padx=5, pady=5, columnspan=6)
         botonSetAzul.config(width=40)
 
+        # **-------------Botones Set Naranja---------------**
+
         botonSetNaranja = tk.Button(self.ventana, text='Set Naranja', bg='Orange', fg='black', font=18
                                  , command=self.set_config_Naranja)
         botonSetNaranja.grid(row=3, column=18, padx=5, pady=5, columnspan=6)
         botonSetNaranja.config(width=40)
+
+        # **-------------Botones Set Celeste---------------**
 
         botonSetCeleste = tk.Button(self.ventana, text='Set Celeste', bg='Skyblue', fg='black', font=18
                                  , command=self.set_config_Celeste)
         botonSetCeleste.grid(row=4, column=18, padx=5, pady=5, columnspan=6)
         botonSetCeleste.config(width=40)
 
+        # **-------------Botones Set Funcion---------------**
+
         botonSetFuncion = tk.Button(self.ventana, text='Set Funcion', bg='Green', fg='black', font=18
                                     , command=self.set_config_Funcion)
         botonSetFuncion.grid(row=5, column=18, padx=5, pady=5, columnspan=6)
         botonSetFuncion.config(width=40)
 
+        # **-------------Botones Set Orientacion---------------**
+
         botonSetOrientacion = tk.Button(self.ventana, text='Set Orientacion', bg='Yellow', fg='black', font=18
                                     , command=self.set_config_Orientacion)
         botonSetOrientacion.grid(row=6, column=18, padx=5, pady=5, columnspan=6)
         botonSetOrientacion.config(width=40)
+
+        # **-------------Botones Set Velocidad---------------**
+
+        botonSetVelocidad = tk.Button(self.ventana, text='Set Velocidad', bg='brown', fg='black', font=18
+                                      , command = self.set_Velidad)
+        botonSetVelocidad.grid(row=8, column=18, padx=5, pady=5, columnspan=6)
+        botonSetVelocidad.config(width=40)
 
         #**-------------Ventana desplegable Botones Rojo,Azul,Naranja y Celeste---------------**
 
@@ -274,7 +320,7 @@ class DisMouse (tk.Frame):
         self.combobox_port['values'] = port
         self.combobox_port.config(width = 40)
         self.combobox_port.grid(row = 1, column = 12,padx=5,pady=5, columnspan=3)
-        self.combobox_port.current(0)
+        #self.combobox_port.current(0)
 
 
         self.combobox_baud = ttk.Combobox(self.ventana, values= self.baudrate)
@@ -282,10 +328,6 @@ class DisMouse (tk.Frame):
         self.combobox_baud.grid(row = 2, column = 12,padx=5,pady=5, columnspan=3)
         self.combobox_baud.current(3)
 
-        conectar = tk.Button(self.ventana, text='Conectar', bg='Grey', fg='black', font=18
-                             , command = self.concetar)
-        conectar.grid(row=3, column=12, padx=5, pady=5, columnspan=6)
-        conectar.config(width=30)
 
         # **-------------Ingresar comando por teclado---------------**
 
@@ -305,9 +347,16 @@ class DisMouse (tk.Frame):
 
         botonLD = tk.Button(self.ventana, text='Leer Dato', bg='grey', fg='black', font=18
                               , command=self.leer_dato)
-        botonLD.grid(row=7, column=12, padx=5, pady=5, columnspan=3)
+        botonLD.grid(row=9, column=12, padx=5, pady=5, columnspan=3)
         botonLD.config(width=30)
 
+        # **-------------Slider Velocidad---------------**
+
+        self.valorVel = tk.StringVar()
+        slider = tk.Scale(self.ventana,from_ = 5, to = 50, orient = 'horizontal'
+                          , length= 500, variable= self.valorVel)
+        slider.grid(row = 8, column=12, padx=5, pady=5, columnspan=3)
+        slider.config(width= 20)
 
         self.ventana.mainloop()
 
