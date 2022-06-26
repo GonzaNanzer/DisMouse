@@ -5,7 +5,7 @@ from tkinter import ttk as ttk
 
 class DisMouse (tk.Frame):
 
-    def __init__(self,master = None):
+    def _init_(self,master = None):
         self.arduino = serial.Serial()
         self.PuertoCOM = []
         self.baudrate = ['1200', '2400', '4800', '9600', '19200', '38400', '115200']
@@ -140,7 +140,15 @@ class DisMouse (tk.Frame):
         if com == '7':
             self.arduino.write(com.encode('ascii'))
             self.nueva_ventana()
-
+        if com == '10':
+            com = 'a'
+            self.arduino.write(com.encode('ascii'))
+        if com == '11':
+            com = 'b'
+            self.arduino.write(com.encode('ascii'))
+        if com == '12':
+            com = 'c'
+            self.arduino.write(com.encode('ascii'))
         else:
             self.arduino.write(com.encode('ascii'))
         return
@@ -150,6 +158,15 @@ class DisMouse (tk.Frame):
         if com == '7':
             self.arduino.write(com.encode('ascii'))
             self.nueva_ventana()
+        if com == '10':
+            com = 'a'
+            self.arduino.write(com.encode('ascii'))
+        if com == '11':
+            com = 'b'
+            self.arduino.write(com.encode('ascii'))
+        if com == '12':
+            com = 'c'
+            self.arduino.write(com.encode('ascii'))
         else:
             self.arduino.write(com.encode('ascii'))
         return
@@ -159,6 +176,15 @@ class DisMouse (tk.Frame):
         if com == '7':
             self.arduino.write(com.encode('ascii'))
             self.nueva_ventana()
+        if com == '10':
+            com = 'a'
+            self.arduino.write(com.encode('ascii'))
+        if com == '11':
+            com = 'b'
+            self.arduino.write(com.encode('ascii'))
+        if com == '12':
+            com = 'c'
+            self.arduino.write(com.encode('ascii'))
         else:
             self.arduino.write(com.encode('ascii'))
         return
@@ -168,6 +194,15 @@ class DisMouse (tk.Frame):
         if com == '7':
             self.arduino.write(com.encode('ascii'))
             self.nueva_ventana()
+        if com == '10':
+            com = 'a'
+            self.arduino.write(com.encode('ascii'))
+        if com == '11':
+            com = 'b'
+            self.arduino.write(com.encode('ascii'))
+        if com == '12':
+            com = 'c'
+            self.arduino.write(com.encode('ascii'))
         else:
             self.arduino.write(com.encode('ascii'))
         return
@@ -232,18 +267,18 @@ class DisMouse (tk.Frame):
 
     def widgets(self):
 
-        # (1)*****---------------------Frame 1---------------------*****#
+        # (1)**---------------------Frame 1---------------------**#
 
-        # (1.1)*****---------------------Conectar tu dispositivo---------------------*****#
+        # (1.1)**---------------------Conectar tu dispositivo---------------------**#
 
         self.ventana = tk.Tk()
-        self.ventana.title('disMouse')
+        self.ventana.title('Configurador de disMouse v1.0')
         #self.ventana.iconbitmap(r'..\DisMouse\DisMouseIco.ico')
         self.ventana.resizable(False,False)
 
         self.Frame1 = tk.LabelFrame(self.ventana, text='Configure su dispositivo')
 
-        # **-------------Puertos COM Disponibles---------------**
+        # *-------------Puertos COM Disponibles---------------*
 
         self.port = self.puertos_disponibles()
 
@@ -262,7 +297,7 @@ class DisMouse (tk.Frame):
 
         self.Frame1.pack()
 
-        # (2)*****---------------------Frame 2---------------------*****#
+        # (2)**---------------------Frame 2---------------------**#
         self.Frame2 = tk.LabelFrame(self.ventana, text='Ingresar/Salir del Modo Configuracion.')
         self.botonConfig = tk.Button(self.Frame2, text='Ingresar al Modo Configuracion', bg='Grey', fg='black', font=10
                                      ,command= self.HolaDisMouse)
@@ -277,17 +312,17 @@ class DisMouse (tk.Frame):
         self.botonSalirConfig['state'] = 'disabled'
         self.Frame2.pack()
 
-        # (3)*****---------------------Frame 3---------------------*****#
+        # (3)**---------------------Frame 3---------------------**#
 
-        # (3.1)*****---------------------Frame 3 - Botones ---------------------*****#
+        # (3.1)**---------------------Frame 3 - Botones ---------------------**#
 
         self.Frame3 = tk.LabelFrame(self.ventana, text='Configura tu disMouse')
 
         self.Frame4 = tk.Frame(self.Frame3)
 
-        # (3.2)*****---------------------Frame 3 - Botones Rojo---------------------*****#
+        # (3.2)**---------------------Frame 3 - Botones Rojo---------------------**#
 
-            # (3.2.1    )*****---------------------Frame 3 - Botones ---------------------*****#
+            # (3.2.1    )**---------------------Frame 3 - Botones ---------------------**#
         self.SubFrame1 = tk.LabelFrame(self.Frame3, text='Configuracion boton rojo')
 
         self.botonRojo = tk.Button(self.SubFrame1, text='Boton Rojo', bg='red', fg='black', font=18
@@ -296,7 +331,7 @@ class DisMouse (tk.Frame):
         self.botonRojo.config(width=15)
 
         OpBotones = ['Clic izquierdo', 'Clic derecho', 'Clic central', 'Barra espaciadora', 'Tecla enter', 'Doble clic',
-                     'Una letra', 'Anular boton']
+                     'Una letra', 'Anular boton', 'Tecla Tab', 'F1', 'F2', 'F3']
         self.combobox_Rojo = ttk.Combobox(self.SubFrame1)
         self.combobox_Rojo['values'] = OpBotones
         self.combobox_Rojo.config(width=15)
@@ -313,7 +348,7 @@ class DisMouse (tk.Frame):
         self.combobox_Rojo['state'] = 'disabled'
         self.botonSetRojo['state'] = 'disabled'
 
-        # (3.2.3    )*****---------------------Frame 3 - Botones Azul ---------------------*****#
+        # (3.2.3    )**---------------------Frame 3 - Botones Azul ---------------------**#
 
         self.SubFrame2 = tk.LabelFrame(self.Frame3, text='Configuracion boton azul')
 
@@ -338,7 +373,7 @@ class DisMouse (tk.Frame):
         self.combobox_Azul['state'] = 'disabled'
         self.botonSetAzul['state'] = 'disabled'
 
-        # (3.2.3    )*****---------------------Frame 3 - Botones Naranja ---------------------*****#
+        # (3.2.3    )**---------------------Frame 3 - Botones Naranja ---------------------**#
 
         self.SubFrame3 = tk.LabelFrame(self.Frame3, text='Configuracion boton naranja')
 
@@ -352,7 +387,7 @@ class DisMouse (tk.Frame):
         self.combobox_Naranja['values'] = OpBotones
         self.combobox_Naranja.config(width=15)
         self.combobox_Naranja.grid(row=5, column=4, padx=10, pady=10, columnspan=3)
-        self.combobox_Naranja.current(2)
+        self.combobox_Naranja.current(5)
 
         self.botonSetNaranja = tk.Button(self.SubFrame3, text='Set Naranja', bg='orange', fg='black', font=18
                                          , command= self.set_config_Naranja)
@@ -363,7 +398,7 @@ class DisMouse (tk.Frame):
         self.combobox_Naranja['state'] = 'disabled'
         self.botonSetNaranja['state'] = 'disabled'
 
-        # (3.2.4    )*****---------------------Frame 3 - Botones Celeste ---------------------*****#
+        # (3.2.4    )**---------------------Frame 3 - Botones Celeste ---------------------**#
 
         self.SubFrame4 = tk.LabelFrame(self.Frame3, text='Configuracion boton naranja')
 
@@ -376,7 +411,7 @@ class DisMouse (tk.Frame):
         self.combobox_Celeste['values'] = OpBotones
         self.combobox_Celeste.config(width=15)
         self.combobox_Celeste.grid(row=6, column=4, padx=10, pady=10, columnspan=3)
-        self.combobox_Celeste.current(3)
+        self.combobox_Celeste.current(4)
 
         self.botonSetCeleste = tk.Button(self.SubFrame4, text='Set Celeste', bg='skyblue', fg='black', font=18
                                          , command= self.set_config_Celeste)
@@ -387,16 +422,16 @@ class DisMouse (tk.Frame):
         self.combobox_Celeste['state'] = 'disabled'
         self.botonSetCeleste['state'] = 'disabled'
 
-               # (3.2.5   )*****---------------------Frame 3 - Botones Funciones ---------------------*****#
+               # (3.2.5   )**---------------------Frame 3 - Botones Funciones ---------------------**#
 
-        self.SubFrame5 = tk.LabelFrame(self.Frame3, text='Configuracion boton funciones')
+        self.SubFrame5 = tk.LabelFrame(self.Frame3, text='Configuracion botones amarillos')
 
-        self.botonFunciones = tk.Button(self.SubFrame5, text='Boton Funcion', bg='Green', fg='black', font=18
+        self.botonFunciones = tk.Button(self.SubFrame5, text='Amarillos', bg='Yellow', fg='black', font=18
                                         , command= self.BotonFunciones)
         self.botonFunciones.grid(row=7, column=1, padx=10, pady=5, columnspan=3)
         self.botonFunciones.config(width=15)
 
-        OpBotonF = ['Desplazar el cursor', 'Simular flechas']
+        OpBotonF = ['Desplazan el cursor', 'Simulan flechas']
 
         self.combobox_Funcion = ttk.Combobox(self.SubFrame5)
         self.combobox_Funcion['values'] = OpBotonF
@@ -404,7 +439,7 @@ class DisMouse (tk.Frame):
         self.combobox_Funcion.grid(row=7, column=4, padx=10, pady=10, columnspan=3)
         self.combobox_Funcion.current(0)
 
-        self.botonSetFuncion = tk.Button(self.SubFrame5, text='Set Funcion', bg='green', fg='black', font=18
+        self.botonSetFuncion = tk.Button(self.SubFrame5, text='Set Amarillos', bg='Yellow', fg='black', font=18
                                          , command= self.set_config_Funcion)
         self.botonSetFuncion.grid(row=7, column=10, padx=10, pady=5, columnspan=6)
         self.botonSetFuncion.config(width=15)
@@ -413,11 +448,11 @@ class DisMouse (tk.Frame):
         self.combobox_Funcion['state'] = 'disabled'
         self.botonSetFuncion['state'] = 'disabled'
 
-               # (3.2.6    )*****---------------------Frame 3 - Botones orientacion ---------------------*****#
+               # (3.2.6    )**---------------------Frame 3 - Botones orientacion ---------------------**#
 
-        self.SubFrame6 = tk.LabelFrame(self.Frame3, text='Configuracion boton orientacion')
+        self.SubFrame6 = tk.LabelFrame(self.Frame3, text='Configuracion orientacion')
 
-        self.botonOrientacion = tk.Button(self.SubFrame6, text='Boton Orientacion', bg='yellow', fg='black', font=18
+        self.botonOrientacion = tk.Button(self.SubFrame6, text='Orientacion', bg='yellow', fg='black', font=18
                                           , command= self.BotonOrientacion)
         self.botonOrientacion.grid(row=8, column=1, padx=10, pady=5, columnspan=3)
         self.botonOrientacion.config(width=15)
@@ -442,18 +477,18 @@ class DisMouse (tk.Frame):
         self.combobox_Orientacion['state'] = 'disabled'
         self.botonSetOrientacion['state'] = 'disabled'
 
-               # (3.2.7    )*****---------------------Frame 3 - Botones Velocidad---------------------*****#
+               # (3.2.7    )**---------------------Frame 3 - Botones Velocidad---------------------**#
 
-        self.SubFrame7 = tk.LabelFrame(self.Frame3, text='Configuracion boton velocidad')
+        self.SubFrame7 = tk.LabelFrame(self.Frame3, text='Configuracion velocidad')
 
-        self.botonVelocidad = tk.Button(self.SubFrame7, text='Boton Velocidad', bg='brown', fg='black', font=18
+        self.botonVelocidad = tk.Button(self.SubFrame7, text='Velocidad cursor', bg='brown', fg='black', font=18
                                         , command=self.BotonVelocidad)
         self.botonVelocidad.grid(row=9, column=1, padx=10, pady=5, columnspan=3)
         self.botonVelocidad.config(width=15)
 
         self.valorVel = tk.StringVar()
-        self.slider = tk.Scale(self.SubFrame7, from_=5, to=50, orient='horizontal'
-                          , length=100, variable=self.valorVel)
+        self.slider = tk.Scale(self.SubFrame7, from_=5, to=50, orient='horizontal',
+                           length=100, variable=self.valorVel)
         self.slider.grid(row=9, column=4, padx=10, pady=5, columnspan=6)
         self.slider.config(width=15)
 
@@ -466,7 +501,7 @@ class DisMouse (tk.Frame):
         self.slider['state'] = 'disabled'
         self.botonSetVelocidad['state'] = 'disabled'
 
-               # (3.2.8    )*****---------------------Frame 3 - Botones orientacion ---------------------*****#
+               # (3.2.8    )**---------------------Frame 3 - Botones orientacion ---------------------**#
 
         self.SubFrame8 = tk.LabelFrame(self.Frame3, text='Configuracion caracter')
 
