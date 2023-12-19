@@ -12,7 +12,7 @@ class DisMouse (tk.Frame):
         self.valor_letra = ''
 
 
-
+        
     def puertos_disponibles(self):
         self.puertos = [port.device for port in serial.tools.list_ports.comports()]
         return list(self.puertos)
@@ -138,7 +138,7 @@ class DisMouse (tk.Frame):
     def set_config_Rojo(self):
         com = str(self.combobox_Rojo.current() + 1)
         if com == '7':
-            self.arduino.write(com.encode('ascii'))
+            #self.arduino.write(com.encode('ascii'))
             self.nueva_ventana()
         if com == '10':
             com = 'a'
@@ -156,7 +156,7 @@ class DisMouse (tk.Frame):
     def set_config_Azul(self):
         com = str(self.combobox_Azul.current() + 1)
         if com == '7':
-            self.arduino.write(com.encode('ascii'))
+            #self.arduino.write(com.encode('ascii'))
             self.nueva_ventana()
         if com == '10':
             com = 'a'
@@ -174,7 +174,7 @@ class DisMouse (tk.Frame):
     def set_config_Naranja(self):
         com = str(self.combobox_Naranja.current() + 1)
         if com == '7':
-            self.arduino.write(com.encode('ascii'))
+            #self.arduino.write(com.encode('ascii'))
             self.nueva_ventana()
         if com == '10':
             com = 'a'
@@ -192,7 +192,7 @@ class DisMouse (tk.Frame):
     def set_config_Celeste(self):
         com = str(self.combobox_Celeste.current() + 1)
         if com == '7':
-            self.arduino.write(com.encode('ascii'))
+            #self.arduino.write(com.encode('ascii'))
             self.nueva_ventana()
         if com == '10':
             com = 'a'
@@ -272,7 +272,7 @@ class DisMouse (tk.Frame):
         # (1.1)*****---------------------Conectar tu dispositivo---------------------*****#
 
         self.ventana = tk.Tk()
-        self.ventana.title('Configurador de disMouse v1.0')
+        self.ventana.title('Configurador de disMouse v1.1')
         #self.ventana.iconbitmap(r'..\DisMouse\DisMouseIco.ico')
         self.ventana.resizable(False,False)
 
